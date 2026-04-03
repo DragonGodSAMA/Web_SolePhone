@@ -3,7 +3,7 @@
 * This file is a Demo for checking if input is valid.
 * For future usage: 'id' name needed
 * You can change the regular expression to satisfy your need.
-* Edit on Apr 3rd 17:38:57
+* update 17:47:59
 */
 
 function checkForm()
