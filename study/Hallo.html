@@ -1,0 +1,233 @@
+<!DOCTYPE html> <!-- 文档类型声明：告知浏览器使用 HTML5 标准解析 -->
+<html lang="en-US"> <!-- 根元素；lang 指定页面主要语言，有助于搜索与辅助技术 -->
+    <head> <!-- 文档头部：元数据、样式、标题等 -->
+        <meta charset="UTF-8"> <!-- 字符编码为 UTF-8，避免乱码 -->
+        <title>HTML Tutorial</title> <!-- 浏览器标签页标题 -->
+        <style> /* 内联样式表开始：为页面定义 CSS 规则 */
+        body {background-color: powderblue;} /* 选择器 body：设置页面背景为浅蓝色 */
+        h1   {color: blue; text-align: center;} /* 选择器 h1：一级标题文字颜色为蓝色 */
+
+
+        /*  p    {color: red;} 选择器 p：段落文字颜色为红色 */
+        p.p1 {color: green; text-align: right;} /* 选择器 p.p1：类为 p1 的段落文字颜色为绿色 */
+        p#p2 {color: yellow; text-align: right;} /* 选择器 p#p2：ID 为 p2 的段落文字颜色为黄色 */
+        p[target="_blank"] {color: pink;} /* 选择器 p[target="_blank"]：target 属性为 "_blank" 的段落文字颜色为粉色 */
+        </style> <!-- 内联样式表结束 -->
+        <!--
+        <head>
+            <link rel="stylesheet" type="text/css" href="style.css" />
+        </head>*/  
+        外部样式表链接；若文件不存在会被忽略
+         -->
+
+        <style> /* 尺寸与响应式演示样式 */
+        .demo-wrap { padding:16px; background:#ffffffaa; border:1px dashed #999; margin:16px 0; }
+        .wrap-300 { width:300px; overflow:auto; background:#f5f9ff; border:1px solid #ccd; }
+        .box-px { width:1000px; height:100px; background:#cfe8ff; display:flex; align-items:center; justify-content:center; }
+        .box-max { width:1000px; max-width:100%; height:100px; background:#b3f0d0; display:flex; align-items:center; justify-content:center; }
+        .box-percent-parent { width:80%; max-width:600px; background:#eef7ff; padding:8px; }
+        .box-percent { width:50%; height:60px; background:#9fd3ff; display:flex; align-items:center; justify-content:center; }
+        .box-vw { width:50vw; height:60px; background:#a8ffd0; display:flex; align-items:center; justify-content:center; }
+        .box-responsive { width:min(90vw, 600px); height:60px; background:#ffd59e; display:flex; align-items:center; justify-content:center; }
+        .img-fluid { max-width:100%; height:auto; display:block; border:1px solid #ddd; }
+        .clamp-title { font-size: clamp(16px, 2vw + 8px, 28px); }
+        .parent-20 { font-size:20px; border:1px dashed #ccc; padding:8px; background:#fff; }
+        .child-em { font-size:1.5em; }
+        .child-rem { font-size:1.5rem; }
+        .code { background:#2d2d2d; color:#eee; padding:8px; border-radius:6px; font-family:Consolas,Menlo,monospace; font-size:14px; white-space:pre; overflow:auto; }
+        @media (max-width:600px) {
+          .media-note::after { content:"（600px 以下触发媒体查询）"; color:#d00; }
+          .box-px { background:#ffdce0; }
+        }
+        </style>
+
+    </head> <!-- 头部结束 -->
+
+    <body style="background-color:powderblue;"> <!-- 页面主体；行内样式再次设置背景色（会覆盖外部） -->
+
+    <h1 style="font-family: verdana; font-size: 400%">HTML Tutorial</h1> <!-- h1：主标题；行内样式设置字体/尺寸/颜色 -->
+    <p  class="p1" title='John "ShotGun" Nelson'>John "ShotGun" Nelson</p> <!-- 空段落；title 为鼠标悬停提示文本 -->
+    <h2 id="p2" style="font-family:courier; text-align: center;">HTML Elements</h2> <!-- h2 副标题；居中对齐 -->
+   
+    <p>This is a <br> paragraph with a line break.  target="_blank"</p> <!-- br 强制换行（不建议滥用） -->
+    <a  href="ucloud.bupt.edu.cn">UCloud</a> <!-- 超链接；未加 http(s) 将被当作相对路径，建议写为 https://ucloud.bupt.edu.cn -->
+    
+    
+    <img style="color:red;" src="ucloud.png" alt="UCloud" width="200" height="200"> <!-- 图像；alt 为替代文本；color 对位图无效 -->
+    <img src="images/ucloud.png" alt="UCloud" width="200" height="200"> <!-- 从子目录 images 加载图片 -->
+    <img src="../ucloud.png" alt="UCloud" width="200" height="200"> <!-- 从上一级目录加载图片 -->
+    <img src="images/ucloud.png" alt="UCloud" usemap="#workmap">
+
+    <img src="images/ucloud.png" alt="UCloud" usemap="#workmap">
+    <map name="workmap">
+    <!-- area 必须放在 map 里面 -->
+    <area shape="circle" coords="337, 300, 44" href="coffee.htm" alt="Coffee">
+    </map>
+
+    <p><b>This text is bold</b><i>This text is <mark>milk</mark> italic</i></p> <!-- b 粗体、i 斜体、mark 高亮文本 -->
+    <p>This is <sup>superscripted</sup> text.</p> <!-- sup 上标 -->
+    <p>This is <sub>subscripted</sub> text.</p> <!-- sub 下标 -->
+    <p><del>Deleted text</del></p> <!-- del 删除线 -->
+    <p><ins>Inserted text</ins></p> <!-- ins 插入文本（常用于审阅语义） -->
+    <p><small>Small text</small></p> <!-- small 小号字 -->
+    <p><strong>Strong text</strong></p> <!-- strong 语义强调（权重+可访问性），通常加粗 -->
+    <p><em>Emphasized text</em></p> <!-- em 语义强调，通常斜体 -->
+    <p><pre>Preformatted text</pre></p> <!-- pre 保留空白与换行（注意：pre 属于块级元素，不建议嵌套在 p 内） -->
+    <p><kbd>Keyboard text</kbd></p> <!-- kbd 表示用户输入/键盘按键 -->
+    <p><var>Variable text</var></p> <!-- var 表示变量名称 -->
+    <p><span style="color:rgba(0, 255, 195, 0.911);">Red text</span></p> <!-- span 行内容器；RGBA 颜色（含透明度） -->
+    
+    <p class="p">Code text</p> <!-- class 属性用于 CSS 选择与复用；此处类名为 p -->
+    <ins>red</ins> <!-- 独立的 ins 元素，非段落包裹 -->
+   
+
+    <table border="1"> <!-- 表格；border 直接加边框（旧式写法），更推荐 CSS 控制 -->
+        <tr> <!-- 行 -->
+            <th>Header 1</th> <!-- 表头单元格，默认加粗并居中 -->
+            <th>Header 2</th>
+        </tr>
+        <tr>
+            <td>Row 1, Cell 1</td> <!-- 普通单元格 -->
+            <td>Row 1, Cell 2</td>
+        </tr>
+        <tr>
+            <td>Row 2, Cell 1</td>
+           
+        </tr> <!-- 本行缺少第二个单元格；可用 colspan 合并或补齐 -->
+    </table> <!-- 表格结束 -->
+
+
+    <ul> <!-- 无序列表（圆点） -->
+        <li>Item 1</li> <!-- 列表项 -->
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+    <ol> <!-- 有序列表（编号） -->
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ol>
+
+
+    <form action="/action_page.php"> <!-- 表单；action 为提交目标 URL -->
+        <label for="fname">First name:</label><br> <!-- label 关联输入框（for 与 input 的 id 匹配）；br 换行 -->
+        <input type="text" id="fname" name="fname" value="John"><br> <!-- 文本输入框；name 为提交键 -->
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname" value="Doe"><br><br> <!-- 连续两个 br 制造空行 -->
+        <input type="submit" value="Submit"> <!-- 提交按钮 -->
+    </form>
+
+    <div> <!-- 普通分区容器 -->
+    <form> <!-- 未设置 action 的表单，提交到当前页面 -->
+        <input type = "radio" name="gender" value="male">Male<br> <!-- 单选框；相同 name 形成互斥组 -->
+        <input type = "radio" name="gender" value="female">Female<br>
+        <input type="submit" value="Submit"> <!-- 提交按钮 -->
+    </form>
+
+    <form> <!-- 第二个表单示例：复选框 -->
+        <input type="checkbox" name="vehicle" value="Bike">I have a bike<br> <!-- 复选框；可多选 -->
+        <input type="checkbox" name="vehicle" value="Car">I have a car<br>
+        <input type="reset" value="Clear form" /> <!-- 重置按钮：恢复表单初始值 -->
+        <input type="submit" value="Submit now" /> <!-- 提交按钮 -->
+    </form>
+    </div>
+
+
+
+
+    <blockquote cite="http://www.worldwildlife.org/who/index.html"> <!-- 引用长段落；cite 提供来源 URL -->
+    For 60 years, WWF has worked to help people and nature thrive. As the world's leading conservation organization, WWF works in nearly 100 countries. At every level, we collaborate with people around the world to develop and deliver innovative solutions that protect communities, wildlife, and the places in which they live.
+    </blockquote> <!-- blockquote 结束 -->
+    <blockquote> <!-- 第二个引用，无 cite 属性 -->
+        For 60 years, WWF has worked to help people and nature thrive...
+        <footer> <!-- 引用的署名/来源（HTML5 语义）；放在 blockquote 内部用于出处说明 -->
+    ——来源：<a href="http://www.worldwildlife.org/who/index.html">WWF 官网</a> <!-- a 超链接：绝对 URL -->
+        </footer>
+    </blockquote>
+    <p>WWF's goal is to: <q>Build a future where people live in harmony with nature.</q></p> <!-- q 行内短引用，浏览器会自动加引号 -->
+
+
+    <p>The <abbr title="World Health Organization">WHO</abbr> was founded in 1948.</p> <!-- abbr 缩写；title 为全称 -->
+     <p><cite>cite</cite></p> <!-- cite 引用作品标题（如书名、文章名） -->
+    
+    <bdo dir="rtl">This text will be written from right to left</bdo> <!-- bdo 双向覆盖：强制文本从右到左 -->
+
+
+    
+    <!-- ====================== 尺寸与响应式示例 ====================== -->
+    <h2 class="clamp-title">尺寸单位与响应式布局示例（标题随视口使用 clamp 自适应）</h2>
+    <div class="demo-wrap">
+      <!-- 绝对尺寸：px 固定宽度，窗口变窄时容易产生水平滚动条 -->
+      <h3>绝对尺寸（px）</h3>
+      <p>下面的容器宽度被限制为 300px，而内部盒子使用 <code>width:1000px</code>（绝对像素）。当父容器或视口更窄时，会出现横向滚动。</p>
+      <div class="wrap-300">
+        <div class="box-px">width: 1000px</div>
+      </div>
+      <div class="code">
+&lt;div class="wrap-300"&gt;
+  &lt;div class="box-px"&gt;width: 1000px&lt;/div&gt;
+&lt;/div&gt;
+/* .box-px { width:1000px; } */
+      </div>
+
+      <!-- max-width：限制最大宽度，避免在小屏上溢出（对应配图中的知识点） -->
+      <h3>设置最大宽度（max-width）</h3>
+      <ul>
+        <li><strong>max-width</strong> 用于设置元素的最大宽度。</li>
+        <li>当浏览器窗口或父容器小于固定宽度（如 1000px）时，固定宽度会导致横向滚动。</li>
+        <li>使用 <strong>max-width:100%</strong> 能让元素在小屏上缩小以适配容器，改善小窗口体验。</li>
+      </ul>
+      <div class="wrap-300">
+        <div class="box-max">width:1000px; max-width:100%</div>
+      </div>
+      <div class="code">
+/* 对比：仍声明 width:1000px，但加上 max-width:100% */
+.box-max { width:1000px; max-width:100%; }
+      </div>
+
+      <!-- 相对尺寸：%、em、rem -->
+      <h3>相对尺寸（%、em、rem）</h3>
+      <p>百分比相对于父元素；<strong>em</strong> 相对于当前元素继承的字体大小；<strong>rem</strong> 相对于根元素（html）的字体大小。</p>
+      <div class="box-percent-parent">
+        <div class="box-percent">width:50%</div>
+      </div>
+      <div class="parent-20">
+        父容器字体 20px
+        <div class="child-em">em 字号：1.5em → 30px</div>
+        <div class="child-rem">rem 字号：1.5rem（若根为 16px → 24px）</div>
+      </div>
+      <div class="code">
+.box-percent-parent { width:80%; max-width:600px; }
+.box-percent { width:50%; }
+.parent-20 { font-size:20px; }
+.child-em { font-size:1.5em; }  /* 1.5 × 20 = 30px */
+.child-rem { font-size:1.5rem; }/* 1.5 × 根字体大小 */
+      </div>
+
+      <!-- 视口单位 & 自适应尺寸 -->
+      <h3>响应式尺寸（vw/vh、min()、clamp()、媒体查询）</h3>
+      <div class="box-vw media-note">width:50vw（随视口宽度的一半变化）</div>
+      <div class="box-responsive">width:min(90vw, 600px)</div>
+      <p>上方第二个盒子使用 <code>min(90vw, 600px)</code>：在大屏不超过 600px，小屏占视口 90% 宽度。</p>
+      <p>本段标题使用 <code>font-size: clamp(16px, 2vw + 8px, 28px)</code>，在不同屏幕下平滑缩放且限定上下限。</p>
+      <div class="code">
+.box-vw { width:50vw; }
+.box-responsive { width:min(90vw, 600px); }
+.clamp-title { font-size: clamp(16px, 2vw + 8px, 28px); }
+@media (max-width:600px) {
+  /* 600px 以下触发，演示媒体查询 */
+  .box-px { background:#ffdce0; }
+}
+      </div>
+
+      <!-- 响应式图片：不超过父容器宽度 -->
+      <h3>响应式图片（max-width:100%）</h3>
+      <div class="wrap-300">
+        <img class="img-fluid" src="images/ucloud.png" alt="UCloud 响应式图片示例">
+      </div>
+      <p>给图片添加 <code>max-width:100%</code> 与 <code>height:auto</code>，能确保图片在小屏缩小且保持比例。</p>
+    </div>
+    <!-- ==================== 尺寸与响应式示例结束 ==================== -->
+
+</html> <!-- 文档结束 -->
+</html> <!-- 文档结束 -->
