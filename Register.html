@@ -31,17 +31,85 @@
             height:100%;
             width:100%;
         }
-        .Registration_container{
+        .Registration_out_container{
             grid-area: main;
             background-color: rgb(255, 255, 255);
         }
-        .footer-Serve {
+        .Registration_container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 80vh;
+        }
+        .Registration_container h1{
+            color: rgb(71, 71, 71);
+            position: relative;
+            top: 50px;
+        }
+        .Registration_container_box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 600px;
+            height: 400px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .Registration_box {
+            width: 400px;
+        }
+        .Registration_box input {
+            display: block;
+            width: calc(100% - 60px);
+            margin: 20px 50px;
+            padding: 8px;
+            background-color: rgb(215, 215, 215);
+            border: 1px solid rgb(227, 227, 227);
+            border-radius: 5px;
+            position: relative;
+            right: 25px;
+        }
+        .Registration_box label {
+            display: block;
+            font-size: 1rem;
+            color: rgb(71, 71, 71);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            position: relative;
+            left: 25px;
+        }
+        .Registration_button {
+            width: 100%;
+            margin: 20px 100px;
+            padding: 10px;
+            background: rgb(184, 122, 122);
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            position: relative;
+            right: 100px;
+            bottom: 50px;
+        }
+        .Registration_button:hover {
+            background: rgb(190, 134, 134);
+        }
+        .register-card {
+            width: 100%;
+            max-width: 600px;
+            background-color: rgb(255, 255, 255);
+            padding: 2.5rem;
+            border-radius: 8px;
+        }
+        
+        .footer_Serve {
             display: flex;
             flex-direction: row;
             justify-content: center;
             align-items: center;
         }
-        .footer-Serve a {
+        .footer_Serve a {
             display: inline-block;
             margin: 30px 15px 0 15px;
             font-size: 15px;
@@ -49,14 +117,14 @@
             color: rgb(99, 99, 99);
             text-decoration: none;
         }
-        .footer-Serve a:hover {
+        .footer_Serve a:hover {
             text-decoration: underline;
         }
         .Back-btn {
             padding: 8px 20px;
             margin-left: auto;
             margin-right: 80px;
-            border: 1px solid rgb(184, 122, 122);
+            border: 1.25px solid rgb(184, 122, 122);
             border-radius: 4px;
             color: rgb(184, 122, 122);
             text-decoration: none;
@@ -67,19 +135,68 @@
             background-color: rgb(184, 122, 122);
             color: rgb(255, 255, 255);
         }
+        @media (max-width: 768px) {
+            .Registration_container h1{
+                top: 70px;
+            }
+             .Registration_container_box {
+                width: 90%;
+                height: auto;
+                flex-direction: column;
+            }
+            .Registration_container_box {
+                flex-direction: column;
+                width: 90%;
+                height: auto;
+            }
+            .Registration_box {
+                width: 100%;
+            }
+            .Registration_box input {
+                width: calc(100% - 80px);
+            }
+        }
+
     </style>
 </head>
 <body>
     <div class="basic_contaner">
         <div class="Header" >
-            <h2 style="color: rgb(71, 71, 71); margin: 20px 20px 0 50px;">DragonGod Phone</h2>
-            <a class="Back-btn" href="#" style="margin-top: 20px;">Back</a>
+            <h2 style="color: rgb(71, 71, 71); margin: 0 20px 0 50px;">DragonGod Phone</h2>
+            <a class="Back-btn" href="#">Back</a>
         </div>
-        <div class="Registration_container">   
-            
+        <div class="Registration_out_container">   
+            <div class="Registration_container">
+                <h1>Registration</h1>
+                <div class="Registration_container_box">
+                    <div class="Registration_box">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your full name">
+                        <label for="address">Address</label>
+                        <input type="text" id="address" name="address" placeholder="Enter your address">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your China phone number">
+                    </div>
+
+                    <div style="height: 80%; border-left: 1px solid rgb(109, 109, 109);margin:0 15px 0 25px;"></div>
+
+                    <div class="Registration_box">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" placeholder="At least 6 alphanumeric characters">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="At least 6 alphanumeric characters">
+                    </div>
+                    
+                </div>
+                <div>
+                    <button type="submit" class="Registration_button">Register</button>
+                </div>
+            </div>
         </div>
         <div>
-        <div class="footer-Serve">
+        <div class="footer_Serve">
             <a href="#">Terms of Service</a>
             <div style="height: 20px; border-left: 1px solid rgb(109, 109, 109);margin-top: 30px;"></div>
             <a href="#">Privacy Policy</a>
