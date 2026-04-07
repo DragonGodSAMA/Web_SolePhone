@@ -148,6 +148,7 @@
             color: rgb(144, 144, 144);
             font-size: 13px;
         }
+
         @media (max-width: 768px) {
             .Feature_Box {
                 grid-template-columns: 1fr;
@@ -163,7 +164,22 @@
                 width : 0;
                 height: 0;
                 overflow: hidden;
+
+                top: 70px;
+                right: 30px;
+                background: #222;
+                border-radius: 10px;
+                flex-direction: column;
+                z-index: 999;
             }
+
+            .nav_links.active {
+                width: 200px;
+                height: auto;
+                padding: 10px 0;
+            }
+
+
             .nav_links img {
                 width: 27px;
                 height: auto;
@@ -174,8 +190,23 @@
                 width:30px;
                 height:auto;
             }
+            .nav_links a {
+                display: block;
+                padding: 12px 25px;
+                margin: 0;
+                color: #fff;
+            }
+            .nav_links a:hover {
+                background: #444;
+                padding-left: 30px;
+            }
         }
     </style>
+    <script>
+    function toggleMenu() {
+        document.querySelector(".nav_links").classList.toggle("active");
+    }
+    </script>
 </head>
 <body>
     <div class="nav">
@@ -185,9 +216,11 @@
             <a href="#">Laptops</a>
             <a href="#">Tablets</a>
             <a href="#">Support</a>
-            <img src="HamburgerMenu.png" alt="menu">
+            <img src="HamburgerMenu.png" alt="menu" onclick="toggleMenu()">
         </div>
     </div>
+
+    
 
     <section class="main_part">
         <img src="DragonGodPhone.png" class="Phone_Img">
