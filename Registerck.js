@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
     window.checkForm = function () {
         let isNameValid = validateInput(nameInput, patt1, nameTip, 'Name cannot be empty');
         let isAddressValid = validateInput(addressInput, patt2, addressTip, 'Address cannot be empty');
-        let isPhoneValid = validateInput(phoneInput, patt3, phoneTip, 'Phone number cannot be empty');
+        let isPhoneValid = validateInput(phoneInput, patt3, phoneTip, 'Enter the correct phone number');
         let isEmailValid = validateInput(emailInput, patt4, emailTip, 'Email cannot be empty');
         let isUsernameValid = validateInput(usernameInput, patt5, usernameTip, 'Username cannot be empty');
         let isPasswordValid = validateInput(passwordInput, patt5, passwordTip, 'Password cannot be empty');
