@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: rgb(227, 227, 227);
+        }
+        .basiccontainer {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .Header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+            width: 100%;
+            padding: 0 50px;
+            box-sizing: border-box;
+        }
+        .Header h2 {
+            color: rgb(71, 71, 71);
+            font-size: 24px;
+            margin: 0;
+        }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            font-size: 16px;
+            color: #333;
+            font-weight: 500;
+        }
+        .nav-links span {
+            cursor: default;
+        }
+        .contentwrap {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding: 0 50px;
+            box-sizing: border-box;
+            margin: 24px 0 0;
+        }
+        .page {
+            width: 100%;
+            margin: 0 auto 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            padding: 18px 22px 28px;
+            box-sizing: border-box;
+        }
+        .loginbtn {
+            text-decoration: none;
+            color: white;
+            background: rgb(184, 122, 122);
+            border-radius: 5px;
+            font-size: 16px;
+            padding: 10px 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+        }
+        .loginbtn:hover {
+            background: rgb(234, 179, 179);
+        }
+        .mainbox {
+            padding: 42px 24px;
+        }
+        .product-slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        .product-slider::-webkit-scrollbar {
+            height: 8px;
+        }
+        .product-slider::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        .product-slider::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+        .product-slider::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+        .slide-item {
+            flex: 0 0 100%;
+            scroll-snap-align: center;
+            display: flex;
+            justify-content: center;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+        .productcard {
+            width: 100%;
+            max-width: 980px;
+            margin: 0 auto;
+            min-height: 560px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 28px 32px;
+            background-color: rgb(250, 250, 250);
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .productimage {
+            width: 100%;
+            max-width: 900px;
+            height: 480px;
+            object-fit: cover;
+            margin-bottom: 28px;
+        }
+        .productname {
+            width: 100%;
+            max-width: 780px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: rgb(71, 71, 71);
+        }
+        .actions {
+            display: flex;
+            gap: 36px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btn {
+            text-decoration: none;
+            color: white;
+            background: rgb(184, 122, 122);
+            border-radius: 5px;
+            min-width: 120px;
+            padding: 12px 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .btn:hover {
+            background: rgb(234, 179, 179);
+        }
+        .singlecard {
+            margin-bottom: 26px;
+        }
+        .nextlistanchor {
+            text-align: center;
+            font-size: 20px;
+            color: #666666;
+        }
+        .Footer {
+            width: 100%;
+            padding-bottom: 0;
+        }
+        .footerServe {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        .footerServe a {
+            display: inline-block;
+            margin: 30px 15px 0 15px;
+            font-size: 15px;
+            text-align: center;
+            color: rgb(99, 99, 99);
+            text-decoration: none;
+        }
+        .footerServe a:hover {
+            text-decoration: underline;
+        }
+        .footertext {
+            color: rgb(120, 120, 120);
+            text-align: center;
+            margin: 20px 0;
+            font-size: 13px;
+        }
+        @media (max-width: 1100px) {
+            .loginbtn {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+            .Header {
+                padding: 0 30px;
+            }
+            .contentwrap {
+                padding: 0 30px;
+                margin: 24px 0 0;
+            }
+            .nav-links {
+                gap: 20px;
+            }
+            .productname {
+                font-size: 24px;
+            }
+            .btn {
+                font-size: 16px;
+                min-width: 100px;
+                padding: 10px 16px;
+            }
+        }
+        @media (max-width: 720px) {
+            .Header {
+                padding: 0 10px;
+            }
+            .Header h2 {
+                font-size: 18px;
+            }
+            .nav-links {
+                display: none;
+            }
+            .contentwrap {
+                width: 100%;
+                padding: 0;
+                margin: 14px 0 0;
+            }
+            .page {
+                padding: 14px;
+                border-radius: 0;
+            }
+            .loginbtn {
+                font-size: 14px;
+                padding: 6px 12px;
+            }
+            .mainbox {
+                padding: 16px 10px;
+            }
+            .productcard {
+                min-height: auto;
+                padding: 18px 10px 16px;
+            }
+            .productimage {
+                height: 190px;
+                margin-bottom: 16px;
+            }
+            .productname {
+                font-size: 20px;
+                margin-bottom: 16px;
+            }
+            .actions {
+                gap: 10px;
+            }
+            .btn {
+                min-width: 100px;
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+            .nextlistanchor {
+                font-size: 14px;
+            }
+            .footerServe a {
+                margin: 30px 10px 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="basiccontainer">
+        <div class="Header">
+            <h2>DragonGod Phone</h2>
+            <div class="nav-links">
+                <span>Home</span>
+                <span>About</span>
+                <span>Store</span>
+                <span>Market</span>
+                <span>Search</span>
+            </div>
+            <a class="loginbtn" href="../Web_SellPhone-feature-HTMLCSS-Detailed_Product_Introduction_Login_registration_Page/Web_SellPhone-feature-HTMLCSS-Detailed_Product_Introduction_Login_registration_Page/LoginPage.html">Log in</a>
+        </div>
+
+        <div class="contentwrap">
+            <div class="page">
+                <div class="mainbox">
+
+                    <div class="product-slider">
+                        <div class="slide-item">
+                            <article class="productcard">
+                                <img class="productimage" src="Resources/dragongod-changxiang-90-pro-max-kv-2x.png" alt="Product Picture">
+                                <h2 class="productname">Product name 1</h2>
+                                <div class="actions">
+                                    <a class="btn" href="../Web_SellPhone-feature-HTMLCSS-Detailed_Product_Introduction_Login_registration_Page/IntroPage.html">Learn more</a>
+                                    <a class="btn" href="SellPage.html">Buy</a>
+                                </div>
+                            </article>
+                        </div>
+                        
+                        <div class="slide-item">
+                            <article class="productcard">
+                                <img class="productimage" src="Resources/design-color-1-2x.webp" alt="Product Picture">
+                                <h2 class="productname">Product name 2</h2>
+                                <div class="actions">
+                                    <a class="btn" href="../Web_SellPhone-feature-HTMLCSS-Detailed_Product_Introduction_Login_registration_Page/IntroPage.html">Learn more</a>
+                                    <a class="btn" href="SellPage.html">Buy</a>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="slide-item">
+                            <article class="productcard">
+                                <img class="productimage" src="Resources/dragongod-changxiang-90-plus-kv-2x.png" alt="Product Picture">
+                                <h2 class="productname">Product name 3</h2>
+                                <div class="actions">
+                                    <a class="btn" href="../Web_SellPhone-feature-HTMLCSS-Detailed_Product_Introduction_Login_registration_Page/IntroPage.html">Learn more</a>
+                                    <a class="btn" href="SellPage.html">Buy</a>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="slide-item">
+                            <article class="productcard">
+                                <img class="productimage" src="Resources/dragongodphone.png" alt="Product Picture">
+                                <h2 class="productname">Product name 4</h2>
+                                <div class="actions">
+                                    <a class="btn" href="../Web_SellPhone-feature-HTMLCSS-Detailed_Product_Introduction_Login_registration_Page/IntroPage.html">Learn more</a>
+                                    <a class="btn" href="SellPage.html">Buy</a>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+                <h3>The product system of DragonGod covers two core sectors: consumer business and enterprise business. 
+                    The consumer business focuses on smartphones, tablet computers and smart wearable devices, while the enterprise business provides network infrastructure and cloud video solutions. 
+                    For a more detailed product catalog, please visit the DragonGod official website product page. 
+                    In 2026, DragonGod continues to deepen the Azure Dragon ecosystem, launching a variety of terminal devices equipped with Azure Dragon 6 system and White Tiger chips, and achieving significant breakthroughs in imaging technology and screen materials.</h3>
+            </div>
+        </div>
+        <div class="Footer">
+            <div class="footerServe">
+                <a href="#">Terms of Service</a>
+                <div style="height: 20px; border-left: 1px solid rgb(109, 109, 109);margin-top: 30px;"></div>
+                <a href="#">Privacy Policy</a>
+                <div style="height: 20px; border-left: 1px solid rgb(109, 109, 109);margin-top: 30px;"></div>
+                <a href="#">Contact Us</a>
+            </div>
+            <p class="footertext">© 2026 DragonGod Phone. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>
