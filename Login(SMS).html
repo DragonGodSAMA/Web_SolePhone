@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LoginPage</title>
-
     <style>
         * {
             list-style-type:none;
@@ -182,7 +181,7 @@
     </style>
 </head>
 <body>
-    <script src="LoginPageck.js"></script>
+    <script src="Login(SMS)ck.js"></script>
     <div class="basic_contaner">
         <div class="Header" >
             <h2 style="color: rgb(71, 71, 71); margin: 20px 20px 0 50px;">DragonGod Phone</h2>
@@ -190,7 +189,7 @@
         </div>
         <div class="Login_out_container">   
             <div class="Login_container">
-                <h1 style="color: rgb(71, 71, 71);">DragonGod Phone Login</h1>
+                <h1 style="color: rgb(71, 71, 71);">SMS Verification Code Login</h1>
                 <div class="Login-container-box">
                     <div class="QRcode-Box">
                         <img src="QRcode.png" alt="QR code">
@@ -200,13 +199,11 @@
                     <div style="height: 100%; border-left: 1px solid rgb(109, 109, 109);"></div>
 
                     <div class="pwd-box">
-                        <input type="text" id="un" placeholder="Username">
-                        <input type="password" id="pw" placeholder="Password">
-                        <a href="Login(SMS).html" style="margin: 10px 0 14px 50px;">Click here to use SMS Verification Code Login</a> 
+                        <input type="text" id="un" placeholder="Phone number">
+                        <input type="password" id="pw" placeholder="Verification Code">
+                        <a href="LoginPage.html" style="margin: 10px 0 14px 50px;">Password Login</a> 
                         <button onclick="checkUNPWlen()">Login</button>
                         <div class="Resister-Box">
-                            <a href="Forgot.html">Forgot Password</a>
-                            <div style="height: 15px; border-left: 1px solid rgb(109, 109, 109, 0.5);margin-top: 10px;"></div>
                             <a href="Register.html">Register Now</a>
                             <div style="height: 15px; border-left: 1px solid rgb(109, 109, 109, 0.5);margin-top: 10px;"></div>
                             <a href="Help.html">Help</a>
