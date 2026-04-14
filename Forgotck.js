@@ -1,35 +1,47 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const input = document.querySelector('.find-box input');
-    const submitBtn = document.querySelector('.find-box button');
-    
-    const errorTip = document.createElement('div');
-    errorTip.style.color = '#ff3333';
-    errorTip.style.fontSize = '12px';
-    errorTip.style.marginTop = '5px';
-    errorTip.style.display = 'none';
-    errorTip.textContent = '×Please enter a valid phone number or email address';
-    
-    input.parentNode.insertBefore(errorTip, input.nextSibling);
 
-    const phoneRegex = /^1[3-9]\d{9}$/;
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    patt3 = /^[0-9]{11}$/;
+    patt4 = /^[^@]+@[^@]+\.(cn|com)$/;
 
-    submitBtn.addEventListener('click', function () {
-        const val = input.value.trim();
-        const isValid = phoneRegex.test(val) || emailRegex.test(val);
+    accountInput = document.getElementById('account');
 
-        if (!isValid) {
-            input.style.borderColor = '#ff3333';
-            errorTip.style.display = 'block';
-            input.value = '';
-        } else {
-            input.style.borderColor = '#e3e3e3';
-            errorTip.style.display = 'none';
-        }
-    });
+    function createErrorTip(input, errorText) {
+        tip = document.createElement('div');
+        tip.style.color = '#ff3333';
+        tip.style.fontSize = '12px';
+        tip.style.margin = '-10px 0 10px 0';
+        tip.style.display = 'none';
+        tip.textContent = '×' + errorText;
+        input.parentNode.insertBefore(tip, input.nextSibling);
+        return tip;
+    }
 
-    input.addEventListener('input', function () {
+    accountTip = createErrorTip(accountInput, '');
+
+    function resetInputState(input, tip) {
         input.style.borderColor = '#e3e3e3';
-        errorTip.style.display = 'none';
-    });
+        tip.style.display = 'none';
+    }
+
+    function showError(input, tip, message) {
+        input.style.borderColor = '#ff3333';
+        tip.textContent = '×' + message;
+        tip.style.display = 'block';
+        input.value = '';
+    }
+
+    window.checkForm = function () {
+
+        let account = document.getElementById("account").value.trim();
+
+        if (patt3.test(account)) {
+            resetInputState(accountInput, accountTip);
+        } else if (patt4.test(account)) {
+            resetInputState(accountInput, accountTip);
+        } else {
+            showError(accountInput, accountTip, "Please enter a valid phone number or email");
+            return false;
+        }
+          return true;
+    }
 });

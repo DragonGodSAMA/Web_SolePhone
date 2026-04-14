@@ -1,86 +1,94 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const patt1 = /^[a-zA-Z ]+$/;
-    const patt2 = /^[a-zA-Z0-9 ]+$/;
-    const patt3 = /^[0-9]{11}$/;
-    const patt4 = /^[^@]+@[^@]+\.(cn|com)$/;
-    const patt5 = /^[a-zA-Z0-9]{6,}$/;
 
-    const nameInput = document.getElementById('name');
-    const addressInput = document.getElementById('address');
-    const phoneInput = document.getElementById('phone');
-    const emailInput = document.getElementById('email');
-    const usernameInput = document.getElementById('username');
-    const passwordInput = document.getElementById('password');
-    const registerBtn = document.querySelector('.Registration_button');
+    patt1 = /^[a-zA-Z ]+$/;
+    patt2 = /^[a-zA-Z0-9 ]+$/;
+    patt3 = /^[0-9]{11}$/;
+    patt4 = /^[^@]+@[^@]+\.(cn|com)$/;
+    patt5 = /^[a-zA-Z0-9]{6,}$/;
+
+    nameInput = document.getElementById('name');
+    addressInput = document.getElementById('address');
+    phoneInput = document.getElementById('phone');
+    emailInput = document.getElementById('email');
+    usernameInput = document.getElementById('username');
+    passwordInput = document.getElementById('password');
 
     function createErrorTip(input, errorText) {
-        const tip = document.createElement('div');
+        tip = document.createElement('div');
         tip.style.color = '#ff3333';
-        tip.style.fontSize = '10px';
-        tip.style.margin = '-15px 50px 10px 25px'; 
+        tip.style.fontSize = '8px';
+        tip.style.margin = '-15px 50px 10px 25px';
         tip.style.display = 'none';
-        tip.textContent = `×${errorText}`;
+        tip.textContent = '×' + errorText;
         input.parentNode.insertBefore(tip, input.nextSibling);
         return tip;
     }
 
-    const nameTip = createErrorTip(nameInput, 'Name can only contain letters and spaces');
-    const addressTip = createErrorTip(addressInput, 'Address can only contain letters, numbers and spaces');
-    const phoneTip = createErrorTip(phoneInput, 'Phone number must be 11 digits');
-    const emailTip = createErrorTip(emailInput, 'Email must be valid (ending with .cn or .com)');
-    const usernameTip = createErrorTip(usernameInput, 'Username must be at least 6 alphanumeric characters');
-    const passwordTip = createErrorTip(passwordInput, 'Password must be at least 6 alphanumeric characters');
+    nameTip = createErrorTip(nameInput, '');
+    addressTip = createErrorTip(addressInput, '');
+    phoneTip = createErrorTip(phoneInput, '');
+    emailTip = createErrorTip(emailInput, '');
+    usernameTip = createErrorTip(usernameInput, '');
+    passwordTip = createErrorTip(passwordInput, '');
 
     function resetInputState(input, tip) {
         input.style.borderColor = '#e3e3e3';
         tip.style.display = 'none';
     }
 
-    function validateInput(input, regex, tip, errorEmptyText) {
-        const val = input.value.trim();
-        if (val === '') {
-            input.style.borderColor = '#ff3333';
-            tip.textContent = `×${errorEmptyText}`;
-            tip.style.display = 'block';
-            input.value = '';
-            return false;
-        }
-        if (!regex.test(val)) {
-            input.style.borderColor = '#ff3333';
-            tip.style.display = 'block';
-            input.value = '';
-            return false;
-        }
-        resetInputState(input, tip);
-        return true;
+    function showError(input, tip, message) {
+        input.style.borderColor = '#ff3333';
+        tip.textContent = '×' + message;
+        tip.style.display = 'block';
+        input.value = '';
     }
 
     window.checkForm = function () {
-        let isNameValid = validateInput(nameInput, patt1, nameTip, 'Name cannot be empty');
-        let isAddressValid = validateInput(addressInput, patt2, addressTip, 'Address cannot be empty');
-        let isPhoneValid = validateInput(phoneInput, patt3, phoneTip, 'Enter the correct phone number');
-        let isEmailValid = validateInput(emailInput, patt4, emailTip, 'Email cannot be empty');
-        let isUsernameValid = validateInput(usernameInput, patt5, usernameTip, 'Username cannot be empty');
-        let isPasswordValid = validateInput(passwordInput, patt5, passwordTip, 'Password cannot be empty');
+        Name = document.getElementById("name").value;
+        Address = document.getElementById("address").value;
+        PhoneNum = document.getElementById("phone").value;
+        email = document.getElementById("email").value;
+        userN = document.getElementById("username").value;
+        passw = document.getElementById("password").value;
 
-        if (isNameValid && isAddressValid && isPhoneValid && isEmailValid && isUsernameValid && isPasswordValid) {
-            alert('All fields are valid! Registration successful.');
-             window.location.href = 'LoginPage.html';
+
+        if (!patt1.test(Name)) {
+            showError(nameInput, nameTip, "Enter The Correct Name! example: Tom Smith");
+            return false;
         }
+        resetInputState(nameInput, nameTip);
+
+        if (!patt2.test(Address)) {
+            showError(addressInput, addressTip, "Enter the correct address with only alphanumeric characters and space");
+            return false;
+        }
+        resetInputState(addressInput, addressTip);
+
+        if (!patt3.test(PhoneNum)) {
+            showError(phoneInput, phoneTip, "Enter the correct China Mainland phone number");
+            return false;
+        }
+        resetInputState(phoneInput, phoneTip);
+
+        if (!patt4.test(email)) {
+            showError(emailInput, emailTip, "Enter the correct email");
+            return false;
+        }
+        resetInputState(emailInput, emailTip);
+
+        if (!patt5.test(userN)) {
+            showError(usernameInput, usernameTip, "Enter the correct username");
+            return false;
+        }
+        resetInputState(usernameInput, usernameTip);
+
+        if (!patt5.test(passw)) {
+            showError(passwordInput, passwordTip, "Enter the correct password");
+            return false;
+        }
+        resetInputState(passwordInput, passwordTip);
+
+        window.location.href = 'LoginPage.html';
+        return true;
     };
-
-    const allInputs = [nameInput, addressInput, phoneInput, emailInput, usernameInput, passwordInput];
-    const allTips = [nameTip, addressTip, phoneTip, emailTip, usernameTip, passwordTip];
-
-    allInputs.forEach((input, index) => {
-        input.addEventListener('input', () => resetInputState(input, allTips[index]));
-    });
-
-    allInputs.forEach(input => {
-        input.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                registerBtn.click();
-            }
-        });
-    });
 });
